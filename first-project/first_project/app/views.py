@@ -51,7 +51,6 @@ def workdir_view(request):
     dir_list = os.listdir()
     msg = [item for item in os.listdir() ]
     msg.insert(0,'Содержимое рабочей директории:')
-    print(msg)
     template_name = 'app/home.html'
     # впишите правильные адреса страниц, используя
     # функцию `reverse`
