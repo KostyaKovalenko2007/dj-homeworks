@@ -19,6 +19,7 @@ def home_view(request):
     # подбробнее о них мы поговорим на следующих лекциях
     context = {
         'pages': pages,
+        'tittle': '',
         'message':[]
     }
     return render(request, template_name, context)
@@ -33,13 +34,13 @@ def time_view(request):
         'Показать текущее время': reverse('time'),
         'Показать содержимое рабочей директории': reverse('workdir')
     }
-    current_time = datetime.utcnow()
-    msg = f'Текущее время: {current_time}'
+
     # context и параметры render менять не нужно
     # подбробнее о них мы поговорим на следующих лекциях
     context = {
         'pages': pages,
-        'message': [msg]
+        'tittle': 'Текущее время:',
+        'message': [datetime.utcnow()]
     }
     # обратите внимание – здесь HTML шаблона нет,
     # возвращается просто текст
@@ -48,9 +49,7 @@ def time_view(request):
 
 
 def workdir_view(request):
-    dir_list = os.listdir()
-    msg = [item for item in os.listdir() ]
-    msg.insert(0,'Содержимое рабочей директории:')
+
     template_name = 'app/home.html'
     # впишите правильные адреса страниц, используя
     # функцию `reverse`
@@ -61,7 +60,8 @@ def workdir_view(request):
     }
     context = {
         'pages': pages,
-        'message': msg
+        'tittle':'Содержимое рабочей директории:',
+        'message': os.listdir()
     }
     # обратите внимание – здесь HTML шаблона нет,
     # возвращается просто текст
