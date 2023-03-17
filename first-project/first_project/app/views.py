@@ -40,7 +40,7 @@ def time_view(request):
     context = {
         'pages': pages,
         'tittle': 'Текущее время:',
-        'message': [datetime.utcnow()]
+        'message': [datetime.now().time()]
     }
     # обратите внимание – здесь HTML шаблона нет,
     # возвращается просто текст
