@@ -10,5 +10,10 @@
         <a href="{{ url }}">{{ title }}</a>
         <br>
     {% endfor %}
+    <br>
+    {% for line in message %}
+        <li> {{ line }}</li>
+    {% endfor %}
+
 </body>
 </html>
