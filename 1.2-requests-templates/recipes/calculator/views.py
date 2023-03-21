@@ -19,6 +19,20 @@ DATA = {
     # можете добавить свои рецепты ;)
 }
 
+
+def recept_viewer(request, item):
+    template_name = 'calculator/index.html'
+    multiplexor = int(request.GET.get('servings', 1))
+    if multiplexor <= 0:
+        multiplexor = 1
+    context = None
+    context={}
+    context['recipe'] = DATA.get(item)
+    for i in context['recipe']:
+        context['recipe'][i] = float(float(context['recipe'][i]) * multiplexor)
+    print(context, multiplexor)
+    return render(request, template_name, context)
+
 # Напишите ваш обработчик. Используйте DATA как источник данных
 # Результат - render(request, 'calculator/index.html', context)
 # В качестве контекста должен быть передан словарь с рецептом:
