@@ -1,37 +1,38 @@
 from django.shortcuts import render
 
-DATA = {
-    'omlet': {
-        'яйца, шт': 2,
-        'молоко, л': 0.1,
-        'соль, ч.л.': 0.5,
-    },
-    'pasta': {
-        'макароны, г': 0.3,
-        'сыр, г': 0.05,
-    },
-    'buter': {
-        'хлеб, ломтик': 1,
-        'колбаса, ломтик': 1,
-        'сыр, ломтик': 1,
-        'помидор, ломтик': 1,
-    },
-    # можете добавить свои рецепты ;)
-}
+
 
 
 def recept_viewer(request, item):
-    template_name = 'calculator/index.html'
+    DATA = {
+        'omlet': {
+            'яйца, шт': 2,
+            'молоко, л': 0.1,
+            'соль, ч.л.': 0.5,
+        },
+        'pasta': {
+            'макароны, г': 0.3,
+            'сыр, г': 0.05,
+        },
+        'buter': {
+            'хлеб, ломтик': 1,
+            'колбаса, ломтик': 1,
+            'сыр, ломтик': 1,
+            'помидор, ломтик': 1,
+        },
+        # можете добавить свои рецепты ;)
+    }
     multiplexor = int(request.GET.get('servings', 1))
     if multiplexor <= 0:
         multiplexor = 1
-    context = None
-    context={}
-    context['recipe'] = DATA.get(item)
-    for i in context['recipe']:
-        context['recipe'][i] = float(float(context['recipe'][i]) * multiplexor)
-    print(context, multiplexor)
-    return render(request, template_name, context)
+    ctx= {}
+    ctx={'recipe': {}}
+    ctx['recipe'] =DATA.get(item,{})
+    for i in DATA.get(item, {}):
+        ctx['recipe'][i] = float(ctx['recipe'][i]) * multiplexor
+    print(request.GET.get('servings'),ctx)
+    return render(request, template_name='calculator/index.html',context=ctx)
+
 
 # Напишите ваш обработчик. Используйте DATA как источник данных
 # Результат - render(request, 'calculator/index.html', context)

@@ -19,5 +19,5 @@ from calculator.views import recept_viewer
 
 urlpatterns = [
     # здесь зарегистрируйте вашу view-функцию
-    path('<item>/', recept_viewer, name='recept_viewer'),
+    path('<str:item>/', recept_viewer, name='recept_viewer'),
 ]
