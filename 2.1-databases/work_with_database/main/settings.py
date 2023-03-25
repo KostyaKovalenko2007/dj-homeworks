@@ -51,11 +51,11 @@ MIDDLEWARE = [
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'netology_import_phones',
-        'HOST': '127.0.0.1',
+        'NAME': '211',
+        'HOST': '192.168.18.4',
         'PORT': '5432',
-        'USER': 'postgres',
-        'PASSWORD': 'ваш пароль',
+        'USER': 'netology_dj',
+        'PASSWORD': 'netology_dj',
     }
 }
 
