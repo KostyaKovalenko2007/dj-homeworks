@@ -12,9 +12,16 @@
             <div class="book col-md-6">
                 <h2>{{book.name}}</h2>
                 <p>Автор: {{book.author}}</p>
-                <p>Дата публикации: <a href="/books/{{book.pub_date|date:'Y-m-d'}}">{{book.pub_date|date:'Y-m-d'}}</a></p>
+                <p>Дата публикации: <a href="/books/{{book.pub_date|date:'Y-m-d'}}">{{book.pub_date|date:'Y-m-d'}} </a></p>
             </div>
             {% endfor %}
+        {% if pagi_prev is not None %}
+            <a href="/books/{{ pagi_prev }}"> <<{{ pagi_prev }} </a>
+        {% endif %}
+        &nbsp
+        {% if pagi_next is not None %}
+            <a href="/books/{{ pagi_next }}">{{ pagi_next }} >> </a>
+        {% endif %}
        <!--</div>-->
     </div>
 {% endblock %}
