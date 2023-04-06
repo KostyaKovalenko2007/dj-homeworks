@@ -91,8 +91,7 @@ class ObjectAdmin(admin.ModelAdmin):
 Для упорядочивания моделей по умолчанию удобно воспользоваться свойством `Meta` класса `ordering`:
 
 ```python
-class Article(models.Model):
-    ...
+class Article(models.Model):    ...
 
     class Meta:
         verbose_name = 'Статья'
