@@ -3,13 +3,15 @@ from .models import Sensor,Measurement
 
 # REVIEW: опишите необходимые сериализаторы
 class MeasurementSerializer(serializers.ModelSerializer):
+    image = serializers.ImageField(max_length=None, allow_empty_file=True, use_url=True)
     class Meta:
         model = Measurement
-        fields = ['temperature', 'created_at']
+        fields = ['temperature', 'created_at','image']
 class MeasurementSerializerCRUD(serializers.ModelSerializer):
+    image = serializers.ImageField(required=False,max_length=None, allow_empty_file=True,use_url=True)
     class Meta:
         model = Measurement
-        fields = ['sensor','temperature', 'created_at']
+        fields = ['sensor','temperature', 'created_at', 'image' ]
 
 class SensorDetailSerializer(serializers.ModelSerializer):
     measurements = MeasurementSerializer(read_only=True, many=True)
