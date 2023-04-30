@@ -6,7 +6,7 @@ class ProductSerializer(serializers.ModelSerializer):
     # настройте сериализатор для продукта
     class Meta:
         model = Product
-        fields = ['id','title','description']
+        fields = ['title','description']
 
     pass
 
@@ -16,7 +16,7 @@ class ProductPositionSerializer(serializers.ModelSerializer):
     class Meta:
         model  =  StockProduct
         fields = [
-            'id',
+
             'product',
             'quantity',
             'price'
@@ -30,7 +30,7 @@ class StockSerializer(serializers.ModelSerializer):
     # настройте сериализатор для склада
     class Meta:
         model = Stock
-        fields = [ 'id',
+        fields = [
                    'address',
                   'positions'
                   ]
